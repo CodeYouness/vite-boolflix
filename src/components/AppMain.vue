@@ -40,5 +40,4 @@ export default {
 @use '../styles/partials/mixin' as *;
 @use '../styles/partials/variable' as *;
 
-
 </style>
