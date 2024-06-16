@@ -15,7 +15,7 @@ export default {
     },
     methods: {
         getMovieList(){
-            axios.get('https://api.themoviedb.org/3/search/movie?api_key=aea95f4298835f7d0f3d896a8e981b61&query=ritorno+al+futuro')
+            axios.get('https://api.themoviedb.org/3/search/movie?api_key=aea95f4298835f7d0f3d896a8e981b61&query=' + this.store.searchedFilm)
             .then((response) => {
                 // handle success
                 console.log(response.data.results);
@@ -27,8 +27,9 @@ export default {
             })
         },
         searchFilm(){
+            this.store.searchedFilm = this.store.searchedFilm.split(' ').join('+')
             console.log(this.store.searchedFilm)
-            console.log('daje')
+            this.getMovieList()
         }
     },
     created(){
