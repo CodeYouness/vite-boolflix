@@ -2,6 +2,7 @@
 import { store } from "../store";
 import axios from 'axios';
 import AppHeader from './AppHeader.vue';
+import MainFilmList from './MainFilmList.vue';
 
 export default {
     data() {
@@ -11,7 +12,8 @@ export default {
     },
     components: {
         store,
-        AppHeader
+        AppHeader,
+        MainFilmList
     },
     methods: {
         getMovieList(){
@@ -19,7 +21,7 @@ export default {
             .then((response) => {
                 // handle success
                 console.log(response.data.results);
-                this.store.cardList = response.data.results
+                this.store.movieList = response.data.results
             })
             .catch(function (error) {
                 // handle error
@@ -40,9 +42,8 @@ export default {
 <template>
 
     <AppHeader @searched="searchFilm"/>
-    <main>
+    <MainFilmList/>
 
-    </main>
 </template>
 
 <style scoped lang="scss">
