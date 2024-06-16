@@ -17,7 +17,7 @@ export default {
             .then((response) => {
                 // handle success
                 console.log(response.data.results);
-                this.store.cardList = response
+                this.store.cardList = response.data.results
             })
             .catch(function (error) {
                 // handle error
