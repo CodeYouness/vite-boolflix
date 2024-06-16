@@ -1,15 +1,17 @@
 <script>
 import { store } from "../store";
 import axios from 'axios';
+import AppHeader from './AppHeader.vue';
 
 export default {
     data() {
         return {
-            store
+            store,
         }
     },
     components: {
-        store
+        store,
+        AppHeader
     },
     methods: {
         getMovieList(){
@@ -24,6 +26,10 @@ export default {
                 console.log(error);
             })
         },
+        searchFilm(){
+            console.log(this.store.searchedFilm)
+            console.log('daje')
+        }
     },
     created(){
         this.getMovieList()
@@ -31,8 +37,10 @@ export default {
 </script>
 
 <template>
+
+    <AppHeader @searched="searchFilm"/>
     <main>
-        
+
     </main>
 </template>
 
