@@ -19,7 +19,7 @@ export default {
     <main>
         <h2>Film List</h2>
         <ul>
-            <li v-for="(film,index) in store.movieList" :key="index" class="d-flex">
+            <li v-for="(film,index) in store.movieList" :key="index" class="d-flex mb-3">
 
                 <div>
                     <p>name film: {{ film.title }}</p>
@@ -32,6 +32,7 @@ export default {
                 <div>
                     <img :src="'https://image.tmdb.org/t/p/w185' + film.poster_path" :alt="film.name">
                 </div>
+
             </li>
         </ul>
     </main>
