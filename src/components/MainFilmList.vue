@@ -19,14 +19,19 @@ export default {
     <main>
         <h2>Film List</h2>
         <ul>
-            <li v-for="(film,index) in store.movieList" :key="index">
-                <p>
-                    name film: {{ film.title }}
-                </p>
-                <p>original name: {{ film.original_title }}</p>
-                <p>language: {{ film.original_language }}</p>
-                <p> average score: {{ film.vote_average }}</p>
-                <p>flag: <span class='fi' :class="'fi-' + film.original_language"> </span></p>
+            <li v-for="(film,index) in store.movieList" :key="index" class="d-flex">
+
+                <div>
+                    <p>name film: {{ film.title }}</p>
+                    <p>original name: {{ film.original_title }}</p>
+                    <p>language: {{ film.original_language }}</p>
+                    <p> average score: {{ film.vote_average }}</p>
+                    <p>flag: <span class='fi' :class="'fi-' + film.original_language"> </span></p>
+                </div>
+
+                <div>
+                    <img :src="'https://image.tmdb.org/t/p/w185' + film.poster_path" :alt="film.name">
+                </div>
             </li>
         </ul>
     </main>

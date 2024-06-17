@@ -19,12 +19,17 @@ export default {
     <main>
         <h2>Series TV List</h2>
         <ul>
-            <li v-for="(series,index) in store.seriesTvList" :key="index">
-                <p>name film: {{ series.name }}</p>
-                <p>original name: {{ series.original_name }}</p>
-                <p>language: {{ series.original_language }}</p>
-                <p> average score: {{ series.vote_average }}</p>
-                <p>flag: <span class='fi' :class="'fi-' + series.original_language"> </span></p>
+            <li v-for="(series,index) in store.seriesTvList" :key="index" class="d-flex">
+                <div>
+                    <p>name film: {{ series.name }}</p>
+                    <p>original name: {{ series.original_name }}</p>
+                    <p>language: {{ series.original_language }}</p>
+                    <p> average score: {{ series.vote_average }}</p>
+                    <p>flag: <span class='fi' :class="'fi-' + series.original_language"> </span></p>
+                </div>
+                <div>
+                    <img :src="'https://image.tmdb.org/t/p/w185' + series.poster_path" :alt="series.name">
+                </div>
             </li>
         </ul>
     </main>
