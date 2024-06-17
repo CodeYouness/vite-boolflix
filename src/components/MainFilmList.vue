@@ -17,6 +17,7 @@ export default {
 <template>
 
     <main>
+        <h2>Film List</h2>
         <ul>
             <li v-for="(film,index) in store.movieList" :key="index">
                 <p>
