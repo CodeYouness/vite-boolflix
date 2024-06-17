@@ -1,16 +1,15 @@
 <script>
 import { store } from "../store";
-import CountryFlag from 'vue-country-flag-next'
+import "/node_modules/flag-icons/css/flag-icons.min.css";
 
 export default {
     data() {
         return {
-            store
+            store,
         }
     },
     components: {
         store,
-        CountryFlag
     }
 }
 </script>
@@ -26,7 +25,7 @@ export default {
                 <p>original name: {{ film.original_title }}</p>
                 <p>language: {{ film.original_language }}</p>
                 <p> average score: {{ film.vote_average }}</p>
-                <p>flag: <country-flag :country='film.original_language' size='small'/></p>
+                <p>flag: <span class='fi' :class="'fi-' + film.original_language"> </span></p>
             </li>
         </ul>
     </main>
