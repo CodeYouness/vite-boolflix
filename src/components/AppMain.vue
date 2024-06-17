@@ -3,6 +3,7 @@ import { store } from "../store";
 import axios from 'axios';
 import AppHeader from './AppHeader.vue';
 import MainFilmList from './MainFilmList.vue';
+import MainSeriesTvList from './MainSeriesTvList.vue'
 
 export default {
     data() {
@@ -13,7 +14,8 @@ export default {
     components: {
         store,
         AppHeader,
-        MainFilmList
+        MainFilmList,
+        MainSeriesTvList
     },
     methods: {
         getMovieList(){
@@ -53,6 +55,7 @@ export default {
 
     <AppHeader @searched="searchFilm"/>
     <MainFilmList/>
+    <MainSeriesTvList/>
 
 </template>
 
