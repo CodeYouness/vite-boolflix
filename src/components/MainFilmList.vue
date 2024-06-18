@@ -23,7 +23,7 @@ export default {
 </script>
 
 <template>
-    <h2>Film List</h2>
+    <h3 class="text-center">Film List</h3>
 
     <main class="d-flex justify-content-center align-items-center">
         <div class="overflow-x-auto">
@@ -40,6 +40,7 @@ export default {
                                 <i class="fa-solid fa-star" v-for="n in getStarMovie(film)"></i>
                                 <i class="fa-regular fa-star" v-for="n in getUnstarMovie(film)"></i>
                             </p>
+                            <p>Overview: {{ film.overview }}</p>
                         </div>
                     </div>
                 </li>
