@@ -1,49 +1,53 @@
 <script>
 import { store } from "../store";
 import "/node_modules/flag-icons/css/flag-icons.min.css";
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 export default {
     data() {
         return {
-            store,
-            FontAwesomeIcon
+            store
         }
     },
     components: {
-        store,
-        FontAwesomeIcon
+        store
     },
     methods: {
         getStarMovie(movie) {
             return Math.ceil(movie.vote_average / 2);
+        },
+        getUnstarMovie(movie) {
+            return (5 - Math.ceil(movie.vote_average / 2));
         }
     },
 }
 </script>
 
 <template>
+    <h2>Film List</h2>
 
-    <main>
-        <h2>Film List</h2>
-        <ul>
-            <li v-for="(film,index) in store.movieList" :key="index" class="d-flex mb-3">
+    <main class="d-flex justify-content-center align-items-center">
+        <div class="overflow-x-auto">
+            <ul class="d-flex flex-nowrap">
+                <li v-for="(film,index) in store.movieList" :key="index" class="d-flex flex-column">
 
-                <div>
-                    <p>name film: {{ film.title }}</p>
-                    <p>original name: {{ film.original_title }}</p>
-                    <p>language: {{ film.original_language }}</p>
-                    <p> average score: {{ film.vote_average }}</p>
-                    <p> stars score: <i class="fa-solid fa-star" v-for="n in getStarMovie(film)"></i></p>
-                    <p>flag: <span class='fi' :class="'fi-' + film.original_language"></span></p>
-                </div>
+                    <div>
+                        <p>Name: {{ film.title }}</p>
+                        <p>Original name: {{ film.original_title }}</p>
+                        <p>Language: {{ film.original_language }} <span class='fi' :class="'fi-' + film.original_language"></span></p>
+                        <p>
+                            Vote:
+                            <i class="fa-solid fa-star" v-for="n in getStarMovie(film)"></i>
+                            <i class="fa-regular fa-star" v-for="n in getUnstarMovie(film)"></i>
+                        </p>
+                    </div>
 
-                <div>
-                    <img :src="'https://image.tmdb.org/t/p/w342' + film.poster_path" :alt="film.name">
-                </div>
+                    <div>
+                        <img :src="'https://image.tmdb.org/t/p/w342' + film.poster_path" :alt="film.name">
+                    </div>
 
-            </li>
-        </ul>
+                </li>
+            </ul>
+        </div>
     </main>
 
 </template>

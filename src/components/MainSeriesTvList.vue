@@ -28,10 +28,9 @@ export default {
                 <div>
                     <p>name film: {{ series.name }}</p>
                     <p>original name: {{ series.original_name }}</p>
-                    <p>language: {{ series.original_language }}</p>
+                    <p>language: {{ series.original_language }} <span class='fi' :class="'fi-' + series.original_language"></span></p>
                     <p> average score: {{ series.vote_average }}</p>
-                    <p> stars score: <i class="fa-solid fa-star" v-for="n in getStarMovie(film)"></i></p>
-                    <p>flag: <span class='fi' :class="'fi-' + series.original_language"> </span></p>
+                    <p> stars score: <i class="fa-solid fa-star" v-for="n in getStarMovie(series)"></i></p>
                 </div>
                 <div>
                     <img :src="'https://image.tmdb.org/t/p/w342' + series.poster_path" :alt="series.name">
