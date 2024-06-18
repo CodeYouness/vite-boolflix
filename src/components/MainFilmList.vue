@@ -25,7 +25,7 @@ export default {
 <template>
     <h3 class="text-center">Film List</h3>
 
-    <main class="d-flex justify-content-center align-items-center">
+    <main class="d-flex align-items-center">
         <div class="overflow-x-auto">
             <ul class="d-flex flex-nowrap">
                 <li v-for="(film,index) in store.movieList" :key="index" class="d-flex flex-column me-3">

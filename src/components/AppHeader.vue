@@ -27,7 +27,7 @@ export default {
                         </li>
                     </ul>
                     <div class="d-flex">
-                        <input class="form-control me-2" placeholder="Search" v-model="store.searchedFilm">
+                        <input class="form-control me-2" placeholder="Search" v-model="store.searchedFilm" @keyup.enter="$emit('searched')">
                         <button class="btn btn-outline-success" @click="$emit('searched')">Search</button>
                     </div>
                 
