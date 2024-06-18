@@ -1,16 +1,24 @@
 <script>
 import { store } from "../store";
 import "/node_modules/flag-icons/css/flag-icons.min.css";
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 export default {
     data() {
         return {
             store,
+            FontAwesomeIcon
         }
     },
     components: {
         store,
-    }
+        FontAwesomeIcon
+    },
+    methods: {
+        getStarMovie(movie) {
+            return Math.ceil(movie.vote_average / 2);
+        }
+    },
 }
 </script>
 
@@ -26,11 +34,12 @@ export default {
                     <p>original name: {{ film.original_title }}</p>
                     <p>language: {{ film.original_language }}</p>
                     <p> average score: {{ film.vote_average }}</p>
+                    <p> stars score: <font-awesome-icon :icon="['fas', 'star']" v-for="n in getStarMovie(film)"/></p>
                     <p>flag: <span class='fi' :class="'fi-' + film.original_language"> </span></p>
                 </div>
 
                 <div>
-                    <img :src="'https://image.tmdb.org/t/p/w185' + film.poster_path" :alt="film.name">
+                    <img :src="'https://image.tmdb.org/t/p/w342' + film.poster_path" :alt="film.name">
                 </div>
 
             </li>

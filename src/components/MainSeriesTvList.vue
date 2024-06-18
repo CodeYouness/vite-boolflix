@@ -28,7 +28,7 @@ export default {
                     <p>flag: <span class='fi' :class="'fi-' + series.original_language"> </span></p>
                 </div>
                 <div>
-                    <img :src="'https://image.tmdb.org/t/p/w185' + series.poster_path" :alt="series.name">
+                    <img :src="'https://image.tmdb.org/t/p/w342' + series.poster_path" :alt="series.name">
                 </div>
             </li>
         </ul>
