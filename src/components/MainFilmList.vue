@@ -34,8 +34,8 @@ export default {
                     <p>original name: {{ film.original_title }}</p>
                     <p>language: {{ film.original_language }}</p>
                     <p> average score: {{ film.vote_average }}</p>
-                    <p> stars score: <font-awesome-icon :icon="['fas', 'star']" v-for="n in getStarMovie(film)"/></p>
-                    <p>flag: <span class='fi' :class="'fi-' + film.original_language"> </span></p>
+                    <p> stars score: <i class="fa-solid fa-star" v-for="n in getStarMovie(film)"></i></p>
+                    <p>flag: <span class='fi' :class="'fi-' + film.original_language"></span></p>
                 </div>
 
                 <div>

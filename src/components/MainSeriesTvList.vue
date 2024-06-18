@@ -10,7 +10,12 @@ export default {
     },
     components: {
         store
-    }
+    },
+    methods: {
+        getStarMovie(movie) {
+            return Math.ceil(movie.vote_average / 2);
+        }
+    },
 }
 </script>
 
@@ -25,6 +30,7 @@ export default {
                     <p>original name: {{ series.original_name }}</p>
                     <p>language: {{ series.original_language }}</p>
                     <p> average score: {{ series.vote_average }}</p>
+                    <p> stars score: <i class="fa-solid fa-star" v-for="n in getStarMovie(film)"></i></p>
                     <p>flag: <span class='fi' :class="'fi-' + series.original_language"> </span></p>
                 </div>
                 <div>
