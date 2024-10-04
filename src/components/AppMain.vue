@@ -19,26 +19,41 @@ export default {
     },
     methods: {
         getMovieList(){
-            axios.get('https://api.themoviedb.org/3/search/movie?api_key=aea95f4298835f7d0f3d896a8e981b61&query=' + this.store.searchedFilm)
-            .then((response) => {
-                // handle success
-                console.log(response.data.results, 'filmlist');
-                this.store.movieList = response.data.results
-            })
-            .catch(function (error) {
-                // handle error
-                console.log(error);
-            })
-            axios.get('https://api.themoviedb.org/3/search/tv?api_key=aea95f4298835f7d0f3d896a8e981b61&language=it_IT&query=' + this.store.searchedFilm)
-            .then((response) => {
-                // handle success
-                console.log(response.data.results, 'seriesTvList');
-                this.store.seriesTvList = response.data.results
-            })
-            .catch(function (error) {
-                // handle error
-                console.log(error);
-            })
+            const query = this.store.searchedFilm;
+
+            if (!this.store.searchedFilm) {
+                axios.get('https://api.themoviedb.org/3/movie/popular?api_key=aea95f4298835f7d0f3d896a8e981b61')
+                .then((response) => {
+                    this.store.movieList = response.data.results.slice(0, 20);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+
+                axios.get('https://api.themoviedb.org/3/tv/popular?api_key=aea95f4298835f7d0f3d896a8e981b61&language=it_IT')
+                .then((response) => {
+                    this.store.seriesTvList = response.data.results.slice(0, 20);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+            } else {
+                axios.get('https://api.themoviedb.org/3/search/movie?api_key=aea95f4298835f7d0f3d896a8e981b61&query=' + query)
+                .then((response) => {
+                    this.store.movieList = response.data.results;
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+
+                axios.get('https://api.themoviedb.org/3/search/tv?api_key=aea95f4298835f7d0f3d896a8e981b61&language=it_IT&query=' + query)
+                .then((response) => {
+                    this.store.seriesTvList = response.data.results;
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+            }
         },
         searchFilm(){
             this.store.searchedFilm = this.store.searchedFilm.split(' ').join('+')
